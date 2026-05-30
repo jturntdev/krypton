@@ -29,7 +29,7 @@ without letting the codebase become a pile of current-looking alternatives.
 Early public package:
 
 ```bash
-git clone https://github.com/Eluticz/krypton.git
+git clone https://github.com/jturntdev/krypton.git
 cp -R krypton/skills/* ~/.codex/skills/
 ```
 

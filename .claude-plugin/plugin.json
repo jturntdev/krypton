@@ -3,11 +3,11 @@
   "description": "Operator discipline for production-grade AI coding agent work.",
   "version": "0.1.0",
   "author": {
-    "name": "Eluticz",
+    "name": "jturntdev",
     "email": "johnnyjunior03@outlook.com"
   },
-  "homepage": "https://github.com/Eluticz/krypton",
-  "repository": "https://github.com/Eluticz/krypton",
+  "homepage": "https://github.com/jturntdev/krypton",
+  "repository": "https://github.com/jturntdev/krypton",
   "license": "MIT",
   "keywords": [
     "skills",

@@ -3,12 +3,12 @@
   "version": "0.1.0",
   "description": "Operator discipline for production-grade AI coding agent work: truth owners, contracts, cutover, review gates, and acceptance evidence.",
   "author": {
-    "name": "Eluticz",
+    "name": "jturntdev",
     "email": "johnnyjunior03@outlook.com",
-    "url": "https://github.com/Eluticz"
+    "url": "https://github.com/jturntdev"
   },
-  "homepage": "https://github.com/Eluticz/krypton",
-  "repository": "https://github.com/Eluticz/krypton",
+  "homepage": "https://github.com/jturntdev/krypton",
+  "repository": "https://github.com/jturntdev/krypton",
   "license": "MIT",
   "keywords": [
     "agents",
@@ -25,7 +25,7 @@
     "displayName": "Krypton",
     "shortDescription": "Production-grade agent planning",
     "longDescription": "Use Krypton to keep AI coding agents safe on serious codebases through outcome contracts, source-of-truth ownership, contract boundaries, cutover decisions, main-agent execution, review gates, and acceptance evidence.",
-    "developerName": "Eluticz",
+    "developerName": "jturntdev",
     "category": "Coding",
     "capabilities": [
       "Interactive",
@@ -36,7 +36,7 @@
       "Turn this feature request into a Krypton plan.",
       "Execute this approved Krypton plan."
     ],
-    "websiteURL": "https://github.com/Eluticz/krypton",
+    "websiteURL": "https://github.com/jturntdev/krypton",
     "privacyPolicyURL": "https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement",
     "termsOfServiceURL": "https://docs.github.com/en/site-policy/github-terms/github-terms-of-service",
     "brandColor": "#7C3AED"

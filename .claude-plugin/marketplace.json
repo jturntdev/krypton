@@ -2,7 +2,7 @@
   "name": "krypton-dev",
   "description": "Development marketplace for Krypton operator skills",
   "owner": {
-    "name": "Eluticz",
+    "name": "jturntdev",
     "email": "johnnyjunior03@outlook.com"
   },
   "plugins": [
@@ -12,7 +12,7 @@
       "version": "0.1.0",
       "source": "./",
       "author": {
-        "name": "Eluticz",
+        "name": "jturntdev",
         "email": "johnnyjunior03@outlook.com"
       }
     }
