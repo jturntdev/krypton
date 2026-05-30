@@ -61,7 +61,7 @@ Displaced path:
 Acceptance evidence gate:
 ```
 
-For broad or unclear repositories, dispatch a read-only explorer if the harness supports agents. Ask one bounded question, such as "map the source of truth, read/write path, unsafe files, and evidence gate." Do not make workers rediscover this map.
+For broad or unclear repositories, dispatch a read-only explorer if the harness supports agents. Ask one bounded question, such as "map the source of truth, read/write path, unsafe files, and evidence gate." The execution session should use this map instead of rediscovering the same slice.
 
 3. Save a goal package unless the user gives another location:
 
@@ -95,11 +95,11 @@ docs/goals/<goal-slug>/GOAL.md
 
 5. Break work into small tasks. Each task names exact files, allowed scope, expected output, verification command, acceptance evidence, and whether it can run in parallel.
 
-6. Run a PRE plan review when possible. Use `plan-reviewer-prompt.md` as the template. Do not execute until blocker findings are fixed or explicitly accepted by the user.
+6. Run a PRE plan review when possible. Use `plan-reviewer-prompt.md` as the individual prompt template. Do not execute until blocker findings are fixed or explicitly accepted by the user.
 
 ## GOAL.md Shape
 
-Use this compact handoff:
+Use this compact handoff. This is the `/goal` prompt or next-session prompt the operator should paste into Codex or Claude:
 
 ```markdown
 # Goal: [Outcome Title]

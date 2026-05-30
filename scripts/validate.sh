@@ -52,8 +52,13 @@ required_files=(
   ".claude-plugin/plugin.json"
   "skills/krypton-planning/SKILL.md"
   "skills/krypton-planning/agents/openai.yaml"
+  "skills/krypton-planning/plan-reviewer-prompt.md"
   "skills/krypton-execution/SKILL.md"
   "skills/krypton-execution/agents/openai.yaml"
+  "skills/krypton-execution/post-plan-reviewer-prompt.md"
+  "skills/krypton-execution/reviewer-prompt.md"
+  "skills/krypton-execution/maintainer-prompt.md"
+  "agents/required-roles.md"
   "examples/wrong-layer-feature.md"
   "tests/pressure-scenarios/wrong-layer.md"
 )

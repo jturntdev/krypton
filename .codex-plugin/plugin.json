@@ -1,7 +1,7 @@
 {
   "name": "krypton",
   "version": "0.1.0",
-  "description": "Planning and execution discipline for AI coding agents: truth owners, contracts, cutover, and acceptance evidence before implementation.",
+  "description": "Operator discipline for production-grade AI coding agent work: truth owners, contracts, cutover, review gates, and acceptance evidence.",
   "author": {
     "name": "Eluticz",
     "email": "johnnyjunior03@outlook.com",
@@ -23,8 +23,8 @@
   "skills": "./skills/",
   "interface": {
     "displayName": "Krypton",
-    "shortDescription": "Truth-first planning for coding agents",
-    "longDescription": "Use Krypton to guide coding agents through outcome contracts, source-of-truth ownership, contract boundaries, cutover decisions, task execution, review gates, and acceptance evidence.",
+    "shortDescription": "Production-grade agent planning",
+    "longDescription": "Use Krypton to keep AI coding agents safe on serious codebases through outcome contracts, source-of-truth ownership, contract boundaries, cutover decisions, main-agent execution, review gates, and acceptance evidence.",
     "developerName": "Eluticz",
     "category": "Coding",
     "capabilities": [

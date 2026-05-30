@@ -1,6 +1,6 @@
 {
   "name": "krypton-dev",
-  "description": "Development marketplace for Krypton skills",
+  "description": "Development marketplace for Krypton operator skills",
   "owner": {
     "name": "Eluticz",
     "email": "johnnyjunior03@outlook.com"
@@ -8,7 +8,7 @@
   "plugins": [
     {
       "name": "krypton",
-      "description": "Truth-first planning and execution skills for AI coding agents.",
+      "description": "Operator discipline for production-grade AI coding agent work.",
       "version": "0.1.0",
       "source": "./",
       "author": {
