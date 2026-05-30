@@ -1,7 +1,7 @@
 {
   "name": "krypton",
   "description": "Operator discipline for production-grade AI coding agent work.",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "author": {
     "name": "jturntdev",
     "email": "197428481+jturntdev@users.noreply.github.com"

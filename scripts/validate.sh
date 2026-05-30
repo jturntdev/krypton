@@ -46,6 +46,7 @@ validate_skill() {
 }
 
 required_files=(
+  "VERSION"
   "README.md"
   "LICENSE"
   ".codex-plugin/plugin.json"
@@ -82,5 +83,23 @@ validate_skill "$ROOT/skills/krypton-execution"
 
 python3 -m json.tool "$ROOT/.codex-plugin/plugin.json" >/dev/null
 python3 -m json.tool "$ROOT/.claude-plugin/plugin.json" >/dev/null
+
+python3 - "$ROOT" <<'PY'
+import json
+import pathlib
+import sys
+
+root = pathlib.Path(sys.argv[1])
+version = (root / "VERSION").read_text().strip()
+checks = {
+    ".codex-plugin/plugin.json": json.loads((root / ".codex-plugin/plugin.json").read_text())["version"],
+    ".claude-plugin/plugin.json": json.loads((root / ".claude-plugin/plugin.json").read_text())["version"],
+    ".claude-plugin/marketplace.json": json.loads((root / ".claude-plugin/marketplace.json").read_text())["plugins"][0]["version"],
+}
+
+for path, value in checks.items():
+    if value != version:
+        raise SystemExit(f"version mismatch: {path} has {value}, VERSION has {version}")
+PY
 
 echo "validation passed"

@@ -1,5 +1,7 @@
 # Krypton
 
+Current version: `0.1.1`
+
 Krypton is an operator discipline for running AI coding agents against serious
 codebases.
 
@@ -23,6 +25,25 @@ agent touches code:
 
 That contract is what lets an operator keep using agents on production systems
 without letting the codebase become a pile of current-looking alternatives.
+
+## Designed For `/goals`
+
+Krypton is best used with `/goals` or any equivalent goal-based agent workflow.
+It is not meant to be a one-shot "please implement this" prompt.
+
+The planning session creates the durable handoff:
+
+```text
+docs/goals/<goal-slug>/PLAN.md
+docs/goals/<goal-slug>/GOAL.md
+```
+
+`PLAN.md` is the source plan. `GOAL.md` is the compact `/goal` prompt. Start the
+execution session with that prompt, then load `krypton-execution` so the main
+agent preserves the plan's ownership, cutover, review, and evidence gates.
+
+If your harness does not have `/goals`, paste the contents of `GOAL.md` into a
+fresh Codex or Claude session. The shape still works.
 
 ## Install
 
@@ -123,6 +144,21 @@ See `examples/` and `tests/pressure-scenarios/` for more.
 This is the first public cut. It is intentionally small: two skills, individual
 prompt templates, agent role expectations, examples, pressure scenarios, and a
 validation script.
+
+## Versioning
+
+Krypton uses SemVer-style versions while the public package stabilizes.
+
+- Version source of truth: `VERSION`
+- Plugin metadata must match: `.codex-plugin/plugin.json`,
+  `.claude-plugin/plugin.json`, and `.claude-plugin/marketplace.json`
+- Release tags should use `vX.Y.Z`
+
+Version policy:
+
+- Patch: README, examples, prompt wording, metadata, validation improvements
+- Minor: new skills, new gates, changed `/goal` workflow shape
+- Major: breaking skill names, removed gates, incompatible plan or goal format
 
 ## Development
 
