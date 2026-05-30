@@ -59,7 +59,7 @@ required_files=(
   "skills/krypton-execution/post-plan-reviewer-prompt.md"
   "skills/krypton-execution/reviewer-prompt.md"
   "skills/krypton-execution/maintainer-prompt.md"
-  "agents/required-roles.md"
+  "docs/required-roles.md"
   "examples/wrong-layer-feature.md"
   "tests/pressure-scenarios/wrong-layer.md"
 )
@@ -101,5 +101,10 @@ for path, value in checks.items():
     if value != version:
         raise SystemExit(f"version mismatch: {path} has {value}, VERSION has {version}")
 PY
+
+if command -v claude >/dev/null 2>&1; then
+  claude plugin validate --strict "$ROOT/.claude-plugin/plugin.json" >/dev/null
+  claude plugin validate --strict "$ROOT/.claude-plugin/marketplace.json" >/dev/null
+fi
 
 echo "validation passed"

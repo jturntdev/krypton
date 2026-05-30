@@ -1,7 +1,7 @@
 # Required Agent Roles
 
 Krypton can run in a single-agent harness, but it is designed for operators who
-can assign narrow roles. Use these roles when the platform supports them.
+can assign narrow review roles. Use these roles when the platform supports them.
 
 ## explorer
 

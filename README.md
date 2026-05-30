@@ -1,6 +1,6 @@
 # Krypton
 
-Current version: `0.1.1`
+Current version: `0.1.2`
 
 Krypton is an operator discipline for running AI coding agents against serious
 codebases.
@@ -47,15 +47,60 @@ fresh Codex or Claude session. The shape still works.
 
 ## Install
 
-Early public package:
+### Claude Code Plugin
+
+Use the plugin route when you want Claude Code to manage Krypton as a plugin:
+
+```text
+/plugin marketplace add jturntdev/krypton
+/plugin install krypton@krypton-dev
+/reload-plugins
+```
+
+Claude Code namespaces plugin skills, so invoke them as:
+
+```text
+/krypton:krypton-planning
+/krypton:krypton-execution
+```
+
+This repo includes the Claude plugin files Claude Code expects:
+
+```text
+.claude-plugin/plugin.json
+.claude-plugin/marketplace.json
+skills/krypton-planning/SKILL.md
+skills/krypton-execution/SKILL.md
+```
+
+### Claude Code Manual Skills
+
+Use manual install when you want the skills available as personal Claude Code
+skills without the plugin marketplace:
 
 ```bash
 git clone https://github.com/jturntdev/krypton.git
-cp -R krypton/skills/* ~/.codex/skills/
+mkdir -p ~/.claude/skills
+cp -R krypton/skills/krypton-planning ~/.claude/skills/
+cp -R krypton/skills/krypton-execution ~/.claude/skills/
 ```
 
-For Claude Code-style skill folders, copy the same `skills/*` directories into
-the local skills directory used by your harness.
+Manual personal skills invoke without a plugin namespace:
+
+```text
+/krypton-planning
+/krypton-execution
+```
+
+### Codex
+
+For Codex skills:
+
+```bash
+git clone https://github.com/jturntdev/krypton.git
+mkdir -p ~/.codex/skills
+cp -R krypton/skills/* ~/.codex/skills/
+```
 
 ## Skills
 
@@ -104,7 +149,7 @@ Krypton works best when the harness supports named agents:
 - `maintainer`: codebase-shape, duplication, and cutover-debt check
 - `verifier`: focused proof from the real path
 
-See `agents/required-roles.md` for the role expectations. If your harness does
+See `docs/required-roles.md` for the role expectations. If your harness does
 not support named agents, the main agent can still follow the same gates, but
 independent exploration and review will be weaker.
 

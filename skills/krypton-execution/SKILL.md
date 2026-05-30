@@ -9,7 +9,7 @@ Krypton Execution runs an approved plan without drifting from its ownership, cut
 
 ## Required Roles
 
-Use the role expectations in `../../agents/required-roles.md` when the harness supports named agents. Implementation stays with the main agent. The normal execution stack is:
+Use the role expectations in `../../docs/required-roles.md` when the harness supports named agents. Implementation stays with the main agent. The normal execution stack is:
 
 ```text
 explorer -> main agent -> plan-reviewer -> reviewer -> maintainer -> verifier
