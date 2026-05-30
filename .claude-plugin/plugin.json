@@ -1,0 +1,20 @@
+{
+  "name": "krypton",
+  "description": "Truth-first planning and execution skills for AI coding agents.",
+  "version": "0.1.0",
+  "author": {
+    "name": "Eluticz",
+    "email": "johnnyjunior03@outlook.com"
+  },
+  "homepage": "https://github.com/Eluticz/krypton",
+  "repository": "https://github.com/Eluticz/krypton",
+  "license": "MIT",
+  "keywords": [
+    "skills",
+    "planning",
+    "agents",
+    "architecture",
+    "workflow",
+    "acceptance-evidence"
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "name": "krypton",
+  "version": "0.1.0",
+  "description": "Planning and execution discipline for AI coding agents: truth owners, contracts, cutover, and acceptance evidence before implementation.",
+  "author": {
+    "name": "Eluticz",
+    "email": "johnnyjunior03@outlook.com",
+    "url": "https://github.com/Eluticz"
+  },
+  "homepage": "https://github.com/Eluticz/krypton",
+  "repository": "https://github.com/Eluticz/krypton",
+  "license": "MIT",
+  "keywords": [
+    "agents",
+    "skills",
+    "planning",
+    "execution",
+    "architecture",
+    "code-review",
+    "acceptance-evidence",
+    "cutover"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Krypton",
+    "shortDescription": "Truth-first planning for coding agents",
+    "longDescription": "Use Krypton to guide coding agents through outcome contracts, source-of-truth ownership, contract boundaries, cutover decisions, task execution, review gates, and acceptance evidence.",
+    "developerName": "Eluticz",
+    "category": "Coding",
+    "capabilities": [
+      "Interactive",
+      "Read",
+      "Write"
+    ],
+    "defaultPrompt": [
+      "Turn this feature request into a Krypton plan.",
+      "Execute this approved Krypton plan."
+    ],
+    "websiteURL": "https://github.com/Eluticz/krypton",
+    "privacyPolicyURL": "https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement",
+    "termsOfServiceURL": "https://docs.github.com/en/site-policy/github-terms/github-terms-of-service",
+    "brandColor": "#7C3AED"
+  }
+}

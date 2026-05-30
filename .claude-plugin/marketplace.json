@@ -1,0 +1,20 @@
+{
+  "name": "krypton-dev",
+  "description": "Development marketplace for Krypton skills",
+  "owner": {
+    "name": "Eluticz",
+    "email": "johnnyjunior03@outlook.com"
+  },
+  "plugins": [
+    {
+      "name": "krypton",
+      "description": "Truth-first planning and execution skills for AI coding agents.",
+      "version": "0.1.0",
+      "source": "./",
+      "author": {
+        "name": "Eluticz",
+        "email": "johnnyjunior03@outlook.com"
+      }
+    }
+  ]
+}
