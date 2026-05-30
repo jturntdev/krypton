@@ -1,14 +1,27 @@
 # Krypton
 
-Current version: `0.1.2`
+Current version: `0.1.3`
 
-Krypton is an operator discipline for running AI coding agents against serious
-codebases.
+Stop AI agents from shipping plausible wrong work.
 
-It keeps production-grade codebases maintainable while agents move fast. The
-failure mode Krypton is built for is not bad syntax. It is the plausible feature
-that compiles while living on the wrong layer, inventing a second source of
-truth, skipping cutover, or claiming success without proof from the real path.
+Krypton is an operator discipline for running Claude Code, Codex, and other AI
+coding agents against production-grade codebases.
+
+The failure mode Krypton is built for is not bad syntax. It is the right-looking
+feature that compiles while living on the wrong layer, inventing a second source
+of truth, skipping cutover, or claiming success without proof from the real path.
+
+Krypton forces the plan before the code:
+
+- truth owner
+- contract boundary
+- displaced path
+- cutover decision
+- acceptance evidence
+- review gates
+
+Built for `/goals`, Claude Code skills/plugins, Codex skills, and operators who
+need agent speed without letting the codebase rot.
 
 ## Why Operators Need It
 
