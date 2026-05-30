@@ -3,7 +3,7 @@
   "description": "Development marketplace for Krypton operator skills",
   "owner": {
     "name": "jturntdev",
-    "email": "johnnyjunior03@outlook.com"
+    "email": "197428481+jturntdev@users.noreply.github.com"
   },
   "plugins": [
     {
@@ -13,7 +13,7 @@
       "source": "./",
       "author": {
         "name": "jturntdev",
-        "email": "johnnyjunior03@outlook.com"
+        "email": "197428481+jturntdev@users.noreply.github.com"
       }
     }
   ]
