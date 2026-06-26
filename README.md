@@ -71,12 +71,27 @@ fresh Codex or Claude session. The shape still works.
 Use the open skills CLI when you want Krypton installed into supported agent
 skill directories:
 
+Codex only:
+
 ```bash
-npx --yes skills add jturntdev/krypton --all --copy
+npx --yes skills add jturntdev/krypton --skill '*' --agent codex --copy -y
 ```
 
-That installs every Krypton skill for every supported local agent target the
-CLI can detect. See the package page:
+Claude Code only:
+
+```bash
+npx --yes skills add jturntdev/krypton --skill '*' --agent claude-code --copy -y
+```
+
+That installs every Krypton skill for the named agent only. If you want Codex,
+Claude Code, OpenCode, or another agent together, run the command without
+`--agent ...` and use the interactive selector:
+
+```bash
+npx --yes skills add jturntdev/krypton
+```
+
+See the package page:
 
 ```text
 https://skills.sh/jturntdev/krypton
