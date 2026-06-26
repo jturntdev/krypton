@@ -1,11 +1,13 @@
 # Krypton
 
-Current version: `0.1.3`
+Current version: `0.2.0`
+
+[![skills.sh](https://skills.sh/b/jturntdev/krypton)](https://skills.sh/jturntdev/krypton)
 
 Stop AI agents from shipping plausible wrong work.
 
-Krypton is an operator discipline for running Claude Code, Codex, and other AI
-coding agents against production-grade codebases.
+Krypton is the goal-based planning and proof gate for running Claude Code,
+Codex, and other AI coding agents against production-grade codebases.
 
 The failure mode Krypton is built for is not bad syntax. It is the right-looking
 feature that compiles while living on the wrong layer, inventing a second source
@@ -20,8 +22,9 @@ Krypton forces the plan before the code:
 - acceptance evidence
 - review gates
 
-Built for `/goals`, Claude Code skills/plugins, Codex skills, and operators who
-need agent speed without letting the codebase rot.
+Built for `/goals`, equivalent goal-based agent workflows, Claude Code
+skills/plugins, Codex skills, and operators who need agent speed without letting
+the codebase rot.
 
 ## Why Operators Need It
 
@@ -49,16 +52,52 @@ The planning session creates the durable handoff:
 ```text
 docs/goals/<goal-slug>/PLAN.md
 docs/goals/<goal-slug>/GOAL.md
+docs/goals/<goal-slug>/EVIDENCE.md
 ```
 
-`PLAN.md` is the source plan. `GOAL.md` is the compact `/goal` prompt. Start the
-execution session with that prompt, then load `krypton-execution` so the main
-agent preserves the plan's ownership, cutover, review, and evidence gates.
+`PLAN.md` is the source plan. `GOAL.md` is the compact `/goal` prompt.
+`EVIDENCE.md` is where execution records the actual proof from the real command,
+artifact, payload, browser state, trace, or operator-visible result. Start the
+execution session with the GOAL prompt, then load `krypton-execution` so the
+main agent preserves the plan's ownership, cutover, review, and evidence gates.
 
 If your harness does not have `/goals`, paste the contents of `GOAL.md` into a
 fresh Codex or Claude session. The shape still works.
 
 ## Install
+
+### skills.sh
+
+Use the open skills CLI when you want Krypton installed into supported agent
+skill directories:
+
+```bash
+npx --yes skills add jturntdev/krypton --all --copy
+```
+
+That installs every Krypton skill for every supported local agent target the
+CLI can detect. See the package page:
+
+```text
+https://skills.sh/jturntdev/krypton
+```
+
+### Codex Repo Marketplace
+
+This repo ships a Codex marketplace file at `.agents/plugins/marketplace.json`.
+For Codex clients that support repo marketplaces:
+
+```bash
+codex plugin marketplace add \
+  "https://github.com/jturntdev/krypton.git" \
+  --ref "main" \
+  --sparse ".agents/plugins" \
+  --sparse ".codex-plugin" \
+  --sparse "assets" \
+  --sparse "skills"
+
+codex plugin install krypton --source krypton
+```
 
 ### Claude Code Plugin
 
@@ -131,6 +170,7 @@ cp -R krypton/skills/* ~/.codex/skills/
 ```text
 docs/goals/<goal-slug>/PLAN.md
 docs/goals/<goal-slug>/GOAL.md
+docs/goals/<goal-slug>/EVIDENCE.md
 ```
 
 3. `PLAN.md` is the full implementation plan. `GOAL.md` is the short `/goal`
@@ -139,17 +179,63 @@ docs/goals/<goal-slug>/GOAL.md
 5. Pair it with `krypton-execution` when you want the main agent to use the same
    ownership, cutover, review, and evidence discipline.
 6. Finish only when the acceptance evidence is captured from the real route,
-   artifact, payload, trace, browser state, or operator-visible output.
+   artifact, payload, trace, browser state, or operator-visible output and
+   recorded in `EVIDENCE.md`.
 
 The workflow is intentionally two-stage:
 
 ```text
 rough request
   -> krypton-planning
-  -> PLAN.md + GOAL.md
+  -> PLAN.md + GOAL.md + EVIDENCE.md
   -> /goal handoff
   -> krypton-execution
   -> main-agent implementation + review gates + acceptance evidence
+```
+
+## GitHub Action
+
+Krypton also ships a reusable PR gate. It fails non-trivial code changes that do
+not include a changed Krypton goal package with:
+
+- `PLAN.md`
+- `GOAL.md`
+- `EVIDENCE.md`
+- truth owner text
+- deletion or cutover text
+- evidence gate and acceptance evidence text
+
+Example workflow:
+
+```yaml
+name: Krypton Goal Gate
+
+on:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  krypton:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          fetch-depth: 0
+      - uses: jturntdev/krypton@main
+```
+
+Run the same gate locally:
+
+```bash
+python3 scripts/check-krypton-goal.py --base-ref origin/main
+```
+
+Goal package templates live in:
+
+```text
+templates/goal-package/
 ```
 
 ## Agent Roles
@@ -200,8 +286,8 @@ See `examples/` and `tests/pressure-scenarios/` for more.
 ## Status
 
 This is the first public cut. It is intentionally small: two skills, individual
-prompt templates, agent role expectations, examples, pressure scenarios, and a
-validation script.
+prompt templates, agent role expectations, goal package templates, a reusable
+GitHub Action gate, examples, pressure scenarios, and validation scripts.
 
 ## Versioning
 

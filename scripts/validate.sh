@@ -51,11 +51,15 @@ required_files=(
   "LICENSE"
   "SECURITY.md"
   ".codexignore"
+  "action.yml"
+  ".agents/plugins/marketplace.json"
   ".codex-plugin/plugin.json"
   ".claude-plugin/plugin.json"
   ".github/dependabot.yml"
   ".github/workflows/hol-plugin-scanner.yml"
+  ".github/workflows/krypton-goal-gate.yml"
   "assets/icon.svg"
+  "scripts/check-krypton-goal.py"
   "skills/krypton-planning/SKILL.md"
   "skills/krypton-planning/agents/openai.yaml"
   "skills/krypton-planning/plan-reviewer-prompt.md"
@@ -65,7 +69,11 @@ required_files=(
   "skills/krypton-execution/reviewer-prompt.md"
   "skills/krypton-execution/maintainer-prompt.md"
   "docs/required-roles.md"
+  "templates/goal-package/PLAN.md"
+  "templates/goal-package/GOAL.md"
+  "templates/goal-package/EVIDENCE.md"
   "examples/wrong-layer-feature.md"
+  "tests/test_check_krypton_goal.py"
   "tests/pressure-scenarios/wrong-layer.md"
 )
 
@@ -88,6 +96,8 @@ validate_skill "$ROOT/skills/krypton-execution"
 
 python3 -m json.tool "$ROOT/.codex-plugin/plugin.json" >/dev/null
 python3 -m json.tool "$ROOT/.claude-plugin/plugin.json" >/dev/null
+python3 -m json.tool "$ROOT/.agents/plugins/marketplace.json" >/dev/null
+python3 -m unittest discover -s "$ROOT/tests" -p "test_*.py" >/dev/null
 
 python3 - "$ROOT" <<'PY'
 import json

@@ -23,7 +23,13 @@ Use the individual prompt templates in this skill folder:
 
 ## Entry Rule
 
-Do not invent the plan inside this workflow. If no approved plan, goal document, or clear task board exists, ask for one direct input or use Krypton Planning first.
+Do not invent the plan inside this workflow. If no approved plan, goal document, or clear task board exists, ask for one direct input or use Krypton Planning first. Prefer a full Krypton goal package:
+
+```text
+docs/goals/<goal-slug>/PLAN.md
+docs/goals/<goal-slug>/GOAL.md
+docs/goals/<goal-slug>/EVIDENCE.md
+```
 
 Before work starts, restate:
 
@@ -85,6 +91,8 @@ Completion requires target-perspective evidence, such as:
 - Hidden logic: deterministic artifact showing the intended result.
 
 If evidence cannot be captured, report the blocker and say `implemented but unproven`.
+
+Record the accepted evidence in `EVIDENCE.md` before the final response when the repo uses Krypton goal packages.
 
 ## Final Gates
 

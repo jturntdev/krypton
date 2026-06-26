@@ -1,0 +1,36 @@
+name: Krypton Goal Gate
+description: Require a Krypton goal package for non-trivial code changes.
+inputs:
+  base-ref:
+    description: Git base ref to diff against. Defaults to origin/<PR base> in pull requests or HEAD~1 on push.
+    required: false
+    default: ""
+  goals-dir:
+    description: Directory containing Krypton goal packages.
+    required: false
+    default: docs/goals
+  require-for:
+    description: Use "code" for code changes only or "always" for every change.
+    required: false
+    default: code
+runs:
+  using: composite
+  steps:
+    - name: Check Krypton goal package
+      shell: bash
+      run: |
+        set -euo pipefail
+
+        base_ref="${{ inputs.base-ref }}"
+        if [ -z "$base_ref" ]; then
+          if [ -n "${GITHUB_BASE_REF:-}" ]; then
+            base_ref="origin/${GITHUB_BASE_REF}"
+          else
+            base_ref="HEAD~1"
+          fi
+        fi
+
+        python3 "$GITHUB_ACTION_PATH/scripts/check-krypton-goal.py" \
+          --base-ref "$base_ref" \
+          --goals-dir "${{ inputs.goals-dir }}" \
+          --require-for "${{ inputs.require-for }}"

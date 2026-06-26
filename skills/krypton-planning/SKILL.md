@@ -5,7 +5,7 @@ description: Use when a user has a feature request, bugfix, refactor, migration,
 
 # Krypton Planning
 
-Krypton Planning turns a request into an implementation plan that names the outcome, truth owner, contract, cutover, and acceptance evidence before anyone writes code.
+Krypton Planning turns a request into a goal package that names the outcome, truth owner, contract, cutover, and acceptance evidence before anyone writes code.
 
 ## Core Rule
 
@@ -38,6 +38,7 @@ Contract boundary:
 Cutover:
 Displaced path:
 Value density:
+Evidence gate:
 Acceptance evidence:
 Evidence lane:
 Kill criteria:
@@ -68,9 +69,10 @@ For broad or unclear repositories, dispatch a read-only explorer if the harness 
 ```text
 docs/goals/<goal-slug>/PLAN.md
 docs/goals/<goal-slug>/GOAL.md
+docs/goals/<goal-slug>/EVIDENCE.md
 ```
 
-`PLAN.md` contains the full plan. `GOAL.md` is a short execution prompt that points to the plan instead of copying it.
+`PLAN.md` contains the full plan. `GOAL.md` is a short execution prompt that points to the plan instead of copying it. `EVIDENCE.md` starts empty and is filled during execution with the real proof captured from the target perspective.
 
 4. Start `PLAN.md` with this header shape:
 
@@ -86,6 +88,7 @@ docs/goals/<goal-slug>/GOAL.md
 **Cutover:** ...
 **Displaced Path:** ...
 **Value Density:** ...
+**Evidence Gate:** ...
 **Acceptance Evidence:** ...
 **Evidence Lane:** ...
 **Kill Criteria:** ...
@@ -110,6 +113,26 @@ Core rules:
 - Treat PLAN.md as the source plan.
 - Preserve intent, ownership, contract, cutover, evidence, and kill criteria.
 - Do not add a new dominant path without deleting, redirecting, demoting, or shimming the displaced path.
-- Capture acceptance evidence from the target perspective.
+- Capture acceptance evidence from the target perspective and record it in EVIDENCE.md.
 - Say "implemented but unproven" if that evidence cannot be captured.
+```
+
+## EVIDENCE.md Shape
+
+Create this file with the goal package and update it during execution:
+
+```markdown
+# [Outcome Title] Evidence
+
+## Acceptance Evidence
+
+Record the real artifact that proves the outcome from the target perspective.
+
+## Verification
+
+Record the focused check that passed, including the command and relevant output.
+
+## Review Notes
+
+Record reviewer, maintainer, or verifier findings that changed the result.
 ```

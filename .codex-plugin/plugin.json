@@ -1,7 +1,7 @@
 {
   "name": "krypton",
-  "version": "0.1.3",
-  "description": "Operator discipline for production-grade AI coding agent work: truth owners, contracts, cutover, review gates, and acceptance evidence.",
+  "version": "0.2.0",
+  "description": "Goal-based planning and proof gate for AI coding agents: truth owners, contracts, cutover, review gates, and acceptance evidence.",
   "author": {
     "name": "jturntdev",
     "email": "197428481+jturntdev@users.noreply.github.com",
@@ -14,17 +14,21 @@
     "agents",
     "skills",
     "planning",
+    "goals",
+    "goal-based-workflow",
+    "goal-based-agents",
     "execution",
     "architecture",
     "code-review",
+    "pr-gate",
     "acceptance-evidence",
     "cutover"
   ],
   "skills": "./skills/",
   "interface": {
     "displayName": "Krypton",
-    "shortDescription": "Production-grade agent planning",
-    "longDescription": "Use Krypton to keep AI coding agents safe on serious codebases through outcome contracts, source-of-truth ownership, contract boundaries, cutover decisions, main-agent execution, review gates, and acceptance evidence.",
+    "shortDescription": "Goal-based agent proof gate",
+    "longDescription": "Use Krypton as the planning and proof gate for goal-based AI coding work: outcome contracts, source-of-truth ownership, contract boundaries, cutover decisions, main-agent execution, review gates, and acceptance evidence.",
     "composerIcon": "./assets/icon.svg",
     "developerName": "jturntdev",
     "category": "Coding",
@@ -35,7 +39,8 @@
     ],
     "defaultPrompt": [
       "Turn this feature request into a Krypton plan.",
-      "Execute this approved Krypton plan."
+      "Execute this approved Krypton plan.",
+      "Check this pull request for a Krypton goal package."
     ],
     "websiteURL": "https://github.com/jturntdev/krypton",
     "privacyPolicyURL": "https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement",
