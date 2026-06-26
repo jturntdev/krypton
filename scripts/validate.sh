@@ -49,8 +49,13 @@ required_files=(
   "VERSION"
   "README.md"
   "LICENSE"
+  "SECURITY.md"
+  ".codexignore"
   ".codex-plugin/plugin.json"
   ".claude-plugin/plugin.json"
+  ".github/dependabot.yml"
+  ".github/workflows/hol-plugin-scanner.yml"
+  "assets/icon.svg"
   "skills/krypton-planning/SKILL.md"
   "skills/krypton-planning/agents/openai.yaml"
   "skills/krypton-planning/plan-reviewer-prompt.md"
@@ -91,8 +96,9 @@ import sys
 
 root = pathlib.Path(sys.argv[1])
 version = (root / "VERSION").read_text().strip()
+codex_manifest = json.loads((root / ".codex-plugin/plugin.json").read_text())
 checks = {
-    ".codex-plugin/plugin.json": json.loads((root / ".codex-plugin/plugin.json").read_text())["version"],
+    ".codex-plugin/plugin.json": codex_manifest["version"],
     ".claude-plugin/plugin.json": json.loads((root / ".claude-plugin/plugin.json").read_text())["version"],
     ".claude-plugin/marketplace.json": json.loads((root / ".claude-plugin/marketplace.json").read_text())["plugins"][0]["version"],
 }
@@ -100,6 +106,17 @@ checks = {
 for path, value in checks.items():
     if value != version:
         raise SystemExit(f"version mismatch: {path} has {value}, VERSION has {version}")
+
+composer_icon = codex_manifest.get("interface", {}).get("composerIcon")
+if not composer_icon:
+    raise SystemExit("missing interface.composerIcon in .codex-plugin/plugin.json")
+
+icon_path = (root / composer_icon).resolve()
+if root.resolve() not in icon_path.parents:
+    raise SystemExit(f"composerIcon points outside repo: {composer_icon}")
+
+if not icon_path.is_file():
+    raise SystemExit(f"missing composerIcon target: {composer_icon}")
 PY
 
 if command -v claude >/dev/null 2>&1; then

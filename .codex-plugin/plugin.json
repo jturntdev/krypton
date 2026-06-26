@@ -25,6 +25,7 @@
     "displayName": "Krypton",
     "shortDescription": "Production-grade agent planning",
     "longDescription": "Use Krypton to keep AI coding agents safe on serious codebases through outcome contracts, source-of-truth ownership, contract boundaries, cutover decisions, main-agent execution, review gates, and acceptance evidence.",
+    "composerIcon": "./assets/icon.svg",
     "developerName": "jturntdev",
     "category": "Coding",
     "capabilities": [
