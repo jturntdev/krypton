@@ -66,7 +66,7 @@ fresh Codex or Claude session. The shape still works.
 
 ## Install
 
-### skills.sh
+### Recommended: skills.sh
 
 Use the open skills CLI when you want Krypton installed into supported agent
 skill directories:
@@ -193,10 +193,14 @@ rough request
   -> main-agent implementation + review gates + acceptance evidence
 ```
 
-## GitHub Action
+## GitHub Action Beta
 
-Krypton also ships a reusable PR gate. It fails non-trivial code changes that do
-not include a changed Krypton goal package with:
+Krypton also ships a reusable PR gate, but treat it as beta until you have
+tested it in a throwaway repo that matches your workflow. The primary install
+path is still the `skills.sh` command above.
+
+The gate fails non-trivial code changes that do not include a changed Krypton
+goal package with:
 
 - `PLAN.md`
 - `GOAL.md`
@@ -205,7 +209,7 @@ not include a changed Krypton goal package with:
 - deletion or cutover text
 - evidence gate and acceptance evidence text
 
-Example workflow:
+Beta workflow example:
 
 ```yaml
 name: Krypton Goal Gate
@@ -223,7 +227,7 @@ jobs:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
         with:
           fetch-depth: 0
-      - uses: jturntdev/krypton@main
+      - uses: jturntdev/krypton@v0.2.0
 ```
 
 Run the same gate locally:
@@ -237,6 +241,13 @@ Goal package templates live in:
 ```text
 templates/goal-package/
 ```
+
+Before relying on the Action in a real repo, test three cases in a throwaway
+repository:
+
+- code change with no goal package should fail
+- docs-only change should pass
+- code change with `PLAN.md`, `GOAL.md`, and `EVIDENCE.md` should pass
 
 ## Agent Roles
 
@@ -286,8 +297,9 @@ See `examples/` and `tests/pressure-scenarios/` for more.
 ## Status
 
 This is the first public cut. It is intentionally small: two skills, individual
-prompt templates, agent role expectations, goal package templates, a reusable
-GitHub Action gate, examples, pressure scenarios, and validation scripts.
+prompt templates, agent role expectations, goal package templates, a local gate
+script, a beta reusable GitHub Action gate, examples, pressure scenarios, and
+validation scripts.
 
 ## Versioning
 
