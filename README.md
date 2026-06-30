@@ -1,6 +1,6 @@
 # Krypton
 
-Current version: `0.2.0`
+Current version: `0.3.0`
 
 [![skills.sh](https://skills.sh/b/jturntdev/krypton)](https://skills.sh/jturntdev/krypton)
 
@@ -175,6 +175,9 @@ cp -R krypton/skills/* ~/.codex/skills/
   slice, task plan, evidence gate, and `/goal` handoff prompt.
 - `krypton-execution`: execute an approved plan without drifting from ownership,
   cutover, or proof requirements.
+- `krypton-vps-codex-app` beta: guide a user through setting up a Linux VPS as
+  a Codex App SSH host, including SSH aliases, GitHub repo access, local config
+  choices, Codex CLI auth, port forwarding, and proof checks.
 
 ## How It Works
 
@@ -242,7 +245,7 @@ jobs:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
         with:
           fetch-depth: 0
-      - uses: jturntdev/krypton@v0.2.0
+      - uses: jturntdev/krypton@v0.3.0
 ```
 
 Run the same gate locally:
@@ -263,6 +266,50 @@ repository:
 - code change with no goal package should fail
 - docs-only change should pass
 - code change with `PLAN.md`, `GOAL.md`, and `EVIDENCE.md` should pass
+
+## VPS Setup Workflow Beta
+
+Krypton also includes a beta Codex App remote-development setup skill:
+`krypton-vps-codex-app`.
+
+Use it when you want a VPS to be the machine that does the work while Codex App
+on your Mac or Windows machine connects over SSH. The VPS owns the repo,
+toolchain, builds, tests, tmux/cmux sessions, dev servers, and Codex CLI auth.
+
+The skill is intentionally consent-based. Codex should ask before each
+operator-owned decision:
+
+- whether the user already has a VPS or still needs to provision one
+- whether Codex may edit `~/.ssh/config` or should only show the snippet
+- whether GitHub should be the source of truth for the VPS checkout
+- which GitHub access path to use: GitHub CLI login, account SSH key, read-only
+  deploy key, public HTTPS clone, or no GitHub setup yet
+- whether local config should be recreated from examples, copied selectively, or
+  skipped
+- whether Codex should only audit or may bootstrap tools over SSH
+
+GitHub is the recommended code path. Local-only config and secrets are a
+separate step. The skill tells Codex not to bulk-copy `.ssh`, `.codex`, browser
+profiles, home directories, caches, `node_modules`, build outputs, private keys,
+or random dotfiles.
+
+Read the beta setup guide:
+
+```text
+docs/vps-codex-app-beta.md
+```
+
+The skill includes a read-only audit script:
+
+```bash
+skills/krypton-vps-codex-app/scripts/audit-vps-codex-app.sh \
+  --host krypton-vps \
+  --repo-url git@github.com:ORG/REPO.git \
+  --repo-path ~/src/REPO
+```
+
+Passing the audit proves the SSH host prerequisites. It does not replace the
+final Codex App remote-thread proof.
 
 ## Agent Roles
 
@@ -311,10 +358,10 @@ See `examples/` and `tests/pressure-scenarios/` for more.
 
 ## Status
 
-This is the first public cut. It is intentionally small: two skills, individual
-prompt templates, agent role expectations, goal package templates, a local gate
-script, a beta reusable GitHub Action gate, examples, pressure scenarios, and
-validation scripts.
+This is the first public cut. It is intentionally small: three skills,
+individual prompt templates, agent role expectations, goal package templates, a
+local gate script, beta GitHub Action and VPS setup workflows, examples,
+pressure scenarios, and validation scripts.
 
 ## Versioning
 

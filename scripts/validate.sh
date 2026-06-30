@@ -68,7 +68,12 @@ required_files=(
   "skills/krypton-execution/post-plan-reviewer-prompt.md"
   "skills/krypton-execution/reviewer-prompt.md"
   "skills/krypton-execution/maintainer-prompt.md"
+  "skills/krypton-vps-codex-app/SKILL.md"
+  "skills/krypton-vps-codex-app/agents/openai.yaml"
+  "skills/krypton-vps-codex-app/references/setup-runbook.md"
+  "skills/krypton-vps-codex-app/scripts/audit-vps-codex-app.sh"
   "docs/required-roles.md"
+  "docs/vps-codex-app-beta.md"
   "templates/goal-package/PLAN.md"
   "templates/goal-package/GOAL.md"
   "templates/goal-package/EVIDENCE.md"
@@ -93,6 +98,7 @@ fi
 
 validate_skill "$ROOT/skills/krypton-planning"
 validate_skill "$ROOT/skills/krypton-execution"
+validate_skill "$ROOT/skills/krypton-vps-codex-app"
 
 python3 -m json.tool "$ROOT/.codex-plugin/plugin.json" >/dev/null
 python3 -m json.tool "$ROOT/.claude-plugin/plugin.json" >/dev/null
