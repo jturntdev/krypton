@@ -1,6 +1,6 @@
 # Krypton
 
-Current version: `0.3.1`
+Current version: `0.3.2`
 
 [![skills.sh](https://skills.sh/b/jturntdev/krypton)](https://skills.sh/jturntdev/krypton)
 
@@ -25,6 +25,24 @@ Krypton forces the plan before the code:
 Built for `/goals`, equivalent goal-based agent workflows, Claude Code
 skills/plugins, Codex skills, and operators who need agent speed without letting
 the codebase rot.
+
+## What's Included
+
+- **New beta: VPS Codex setup** (`krypton-vps-codex-app`): a guided workflow for
+  using a Linux VPS as the remote machine for Codex App work, including VPS
+  readiness questions, SSH aliases, GitHub repo access, local config choices,
+  Codex CLI auth, port forwarding, and proof checks.
+- **Krypton planning** (`krypton-planning`): turns a request into a goal package
+  with the truth owner, boundary, cutover decision, task plan, review gates, and
+  acceptance evidence.
+- **Krypton execution** (`krypton-execution`): keeps an approved plan on track
+  while the main agent implements, verifies, and records proof.
+- **GitHub Action beta**: checks pull requests for the goal-package evidence
+  Krypton expects before non-trivial code changes ship.
+
+Jump to: [Install](#install) | [Skills And Beta Workflows](#skills-and-beta-workflows) |
+[VPS Setup Workflow Beta](#vps-setup-workflow-beta) |
+[GitHub Action Beta](#github-action-beta)
 
 ## Why Operators Need It
 
@@ -256,7 +274,7 @@ jobs:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
         with:
           fetch-depth: 0
-      - uses: jturntdev/krypton@v0.3.1
+      - uses: jturntdev/krypton@v0.3.2
 ```
 
 Run the same gate locally:
