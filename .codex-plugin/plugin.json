@@ -1,6 +1,6 @@
 {
   "name": "krypton",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "Goal-based planning, proof gates, and VPS setup workflows for AI coding agents.",
   "author": {
     "name": "jturntdev",

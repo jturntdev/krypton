@@ -1,6 +1,6 @@
 # Krypton
 
-Current version: `0.3.0`
+Current version: `0.3.1`
 
 [![skills.sh](https://skills.sh/b/jturntdev/krypton)](https://skills.sh/jturntdev/krypton)
 
@@ -169,15 +169,26 @@ mkdir -p ~/.codex/skills
 cp -R krypton/skills/* ~/.codex/skills/
 ```
 
-## Skills
+## Skills And Beta Workflows
+
+Stable skills:
 
 - `krypton-planning`: turn a request into an outcome contract, architecture
   slice, task plan, evidence gate, and `/goal` handoff prompt.
 - `krypton-execution`: execute an approved plan without drifting from ownership,
   cutover, or proof requirements.
+
+Beta workflow:
+
 - `krypton-vps-codex-app` beta: guide a user through setting up a Linux VPS as
-  a Codex App SSH host, including SSH aliases, GitHub repo access, local config
-  choices, Codex CLI auth, port forwarding, and proof checks.
+  a Codex App SSH host, including VPS provisioning questions, SSH aliases,
+  GitHub repo access, local config choices, Codex CLI auth, port forwarding,
+  and proof checks.
+
+The beta workflow points at where Krypton is going: not just plans and review
+gates, but repeatable operator workflows that help a user move from local
+agent work to durable remote development without hiding the security,
+credential, and proof decisions.
 
 ## How It Works
 
@@ -245,7 +256,7 @@ jobs:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
         with:
           fetch-depth: 0
-      - uses: jturntdev/krypton@v0.3.0
+      - uses: jturntdev/krypton@v0.3.1
 ```
 
 Run the same gate locally:
@@ -269,12 +280,19 @@ repository:
 
 ## VPS Setup Workflow Beta
 
-Krypton also includes a beta Codex App remote-development setup skill:
+Krypton also includes a clearly marked beta Codex App remote-development setup
+workflow:
 `krypton-vps-codex-app`.
 
 Use it when you want a VPS to be the machine that does the work while Codex App
 on your Mac or Windows machine connects over SSH. The VPS owns the repo,
 toolchain, builds, tests, tmux/cmux sessions, dev servers, and Codex CLI auth.
+
+This is beta because VPS providers, Codex App remote connections, GitHub access
+choices, and project setup commands vary by operator. The goal is for Krypton to
+become the clean setup lane: Codex asks the right questions, explains the safest
+default, waits for user-owned steps, runs only approved setup or audit commands,
+and finishes with proof from the real remote project.
 
 The skill is intentionally consent-based. Codex should ask before each
 operator-owned decision:
